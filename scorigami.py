@@ -5,24 +5,25 @@ csv_file = open('saved.csv')
 past_scores = csv.DictReader(csv_file)
 
 class Location:
-    numOccurred = 0
-
     def __init__(self, winnerPoints, loserPoints, gameNum):
         self.winnerPoints = winnerPoints
         self.loserPoints = loserPoints
         self.gameNum = gameNum
+        self.numOccurred = 0
 
     def setNumber(self, num):
         self.numOccurred = num
 
     def checkPossible(self):
-        if self.winnerPoints >= self.loserPoints:
-            return True
-        else:
-            # RETURN FALSE
+        if self.winnerPoints < self.loserPoints:
             return False
+        elif self.loserPoints == 1 and (self.winnerPoints <= 7 and self.winnerPoints != 6):
+            return False
+        elif self.winnerPoints == 1 and self.loserPoints == 0:
+            return False
+        else:
+            return True
 
-    # COLORS: \033[48;5;39m `BLUE` --> \033[48;5;34m `GREEN`
     def setColor(self):
         if self.checkPossible():
             if self.numOccurred > 25:
