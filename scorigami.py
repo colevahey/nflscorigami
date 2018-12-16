@@ -35,9 +35,9 @@ class Location:
             elif 3 < self.numOccurred <= 5:
                 colNum = 40
             elif 1 < self.numOccurred <= 3:
-                colNum = 46
+                colNum = 46 
             elif 0 < self.numOccurred <= 1:
-                colNum = 82
+                colNum = 82 
             else:
                 colNum = 230
         else:
@@ -64,3 +64,4 @@ positions = [position.setColor() for position in positions]
 input("Press [ENTER] to continue")
 print("\033[H\033[2J")
 print(games_table.format(*positions))
+print(" \033[48;5;{}m \033[0m 0-1   \033[48;5;{}m \033[0m 1-3   \033[48;5;{}m \033[0m 3-5    \033[48;5;{}m \033[0m 5-12    \033[48;5;{}m \033[0m 12-25    \033[48;5;{}m \033[0m 25+".format(82,46,40,34,28,22))
